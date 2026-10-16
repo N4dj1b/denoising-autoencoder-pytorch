@@ -1,0 +1,46 @@
+{
+  "dataset": "digits",
+  "dataset_description": "scikit-learn Digits (1,797 source images at 8x8, normalized and bilinearly resized to 28x28)",
+  "train_images": 1200,
+  "test_images": 350,
+  "image_shape": [
+    1,
+    28,
+    28
+  ],
+  "seed": 42,
+  "epochs": 6,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "additive_sigma": 0.25,
+  "gamma_looks": 4.0,
+  "device": "cpu",
+  "software": {
+    "python": "3.13.5",
+    "pytorch": "2.10.0+cpu",
+    "numpy": "2.3.5"
+  },
+  "conditions": [
+    {
+      "noise": "additive_gaussian",
+      "loss": "mse"
+    },
+    {
+      "noise": "additive_gaussian",
+      "loss": "l1"
+    },
+    {
+      "noise": "multiplicative_gamma",
+      "loss": "mse"
+    },
+    {
+      "noise": "multiplicative_gamma",
+      "loss": "l1"
+    }
+  ],
+  "notes": [
+    "Gamma multiplicative noise is a simplified speckle-inspired perturbation, not a physical SAR simulator.",
+    "The same held-out noisy inputs are reused for the MSE and L1 model comparison within each noise condition.",
+    "The evaluation subset and number of epochs are small; results are illustrative, not generalizable claims."
+  ]
+}
